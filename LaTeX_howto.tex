@@ -89,6 +89,9 @@ The macros defined to write the math in this document are
 \end{lstlisting}
 \end{quote}
 
+Detailed information on defining your own macros can be found on
+\url{http://en.wikibooks.org/wiki/LaTeX/Macros}
+
 \subsection{Using the same preamble for several documents}
 It is a good idea to have a separate file \code{preamble.tex}
 for the preamble and include it just above \verb+\begin{document}+ with the line
@@ -227,7 +230,7 @@ C \arrow[r,swap,"h"]
 D
 \end{tikzcd}
 \end{equation*}
-It is also possible to draw parallel arrows, for instance, to display equalizer
+It is also possible to draw parallel arrows, for instance, to display coequalizer
 diagrams, and dotted arrows to display universal properties. The code
 \begin{quote}
 \begin{lstlisting}
@@ -279,6 +282,7 @@ displaying diagrams.
 \section{Getting your homework done}
 The source file of your homework would probably look something like
 \begin{quote}
+\lstset{numbers=none}
 \begin{lstlisting}
 \documentclass{article}
 \title{Homework set 1}
@@ -288,9 +292,11 @@ The source file of your homework would probably look something like
 \usepackage{amssymb,amsthm,amsmath}
 \usepackage{tikzcd}
 
+%%%% The exercise environments
 \theoremstyle{definition}
 \newtheorem{ex}{Exercise}
 
+%%%% My macros
 \newcommand{\cat}{%
   \mathbf%
 }
@@ -373,6 +379,8 @@ the \name{ctan} comprehensive symbol list, which is available at
 \end{itemize}
 \end{itemize}
 
-If you have any questions or suggestions you can also email me.
-
+If you have any questions or suggestions you can also email me. To see how
+things are done, you may also want to have a look at the source of this document.
+It is available on
+\url{https://github.com/EgbertRijke/CategoryTheory_Course}
 \end{document}
