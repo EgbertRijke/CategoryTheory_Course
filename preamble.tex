@@ -1,0 +1,53 @@
+%%%% Packages
+\usepackage{microtype}              % adjusts LaTeX's default spacing
+\usepackage{amsmath,amssymb,amsthm} % display math
+\usepackage{tikz-cd}                % draw commutative diagrams
+\usepackage{listings}               % display code
+\lstset{%                            % set parameters to display code
+  language=tex,%
+  keywordstyle=\color{red}\texttt,%
+  commentstyle=\color{blue}\textit,%
+  numbers=left,%
+  numberstyle=\tiny\color{gray}%
+}
+\lstset{%
+  morekeywords={documentclass,begin,author,title,date,today,maketitle,LaTeX,
+  newcommand,mathcal,mathbf,mathrm,texttt,theoremstyle,newtheorem,emph,circ}%
+}
+\usepackage[colorlinks=true]{hyperref}               % create hyperlinks in the pdf file.
+
+%%%% Environments for theorems and definitions
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}{Exercise}
+
+%%%% Macros for mathematical notation
+\newcommand{\cat}{%
+  \mathbf%
+}
+\newcommand{\domain}[1]{%
+  \mathrm{dom}(#1)%
+}
+\newcommand{\codomain}[1]{%
+  \mathrm{cod}(#1)%
+}
+\newcommand{\idarrow}[1][]{%
+  \mathbf{1}_{#1}%
+}
+
+%%%% Macros for use in text
+\newcommand{\code}{%
+  \texttt%
+}
+\newcommand{\name}{%
+  \textsc%
+}
+  
+%%%% Environments
+
+%%%% Set custom controls for enumerate environment
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\labelenumi}{(\theenumi)}
+\renewcommand{\theenumii}{\roman{enumii}}
+\renewcommand{\labelenumii}{(\theenumii)}
+

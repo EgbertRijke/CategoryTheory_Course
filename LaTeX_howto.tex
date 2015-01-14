@@ -1,0 +1,378 @@
+\documentclass{article}
+
+\title{Using \LaTeX~in category theory}
+\author{Egbert Rijke}
+\date\today
+
+\input{preamble}
+
+\begin{document}
+
+\maketitle
+
+This document is a quick how-to for the students of the category theory
+class at the CMU. It contains specific and practical knowledge of \LaTeX~which
+will be useful to write homework solutions. 
+
+\section{Writing your document}
+\subsection{Setting up your document}
+
+To get started with \LaTeX, section 1 of the \name{Wikibook} on
+\url{http://en.wikibooks.org/wiki/LaTeX} provides descriptions of what \LaTeX~is,
+how to obtain it and the basics of \LaTeX-syntax.
+
+The basic layout of the source code of the document you are currently
+reading is
+
+\begin{quote}
+\begin{lstlisting}
+\documentclass{article}
+
+\title{Using \LaTeX~in category theory}
+\author{Egbert Rijke}
+\date\today
+
+% Before you begin writing your document you have
+% space to set up user-defined commands, or to 
+% load existing packages containing frequently
+% used commands. This part of the file is called
+% the preamble.
+
+\begin{document}
+\maketitle
+
+% Write the text you want the document to contain
+% between the \begin{document} and the 
+% \end{document} declarations.
+
+\end{document}
+\end{lstlisting}
+\end{quote}
+
+As soon as the \LaTeX-compiler encounters the percent sign (\%), the rest of 
+that line including the line-break, is ignored by the compiler. You can use this 
+feature to provide comments within your source code, or to keep your code neat
+and organized.
+
+The document structure is explained in more detail on
+\url{http://en.wikibooks.org/wiki/LaTeX/Document_Structure}
+
+\subsection{User defined macros}
+
+User defined commands, also called \emph{macros}, are useful to
+\begin{itemize}
+\item simplify the process of typesetting,
+\item make the source code of your document (i.e.~the \code{.tex} files) more readable,
+\item ensure uniformity of notation in your document, or even throughout several
+documents,
+\item facilitate change of notation when you're not yet quite sure.
+\end{itemize}
+As a rule of thumb, every mathematical concept which needs notation has
+either a predefined macro (in the case it is very basic), or it has a
+user defined macro.
+
+The macros defined to write the math in this document are
+\begin{quote}
+\begin{lstlisting}
+\newcommand{\cat}{%
+  \mathbf%
+}
+\newcommand{\domain}[1]{%
+  \mathrm{dom}(#1)%
+}
+\newcommand{\codomain}[1]{%
+  \mathrm{cod}(#1)%
+}
+\newcommand{\idarrow}[1][]{%
+  \mathbf{1}_{#1}%
+}
+\end{lstlisting}
+\end{quote}
+
+\subsection{Using the same preamble for several documents}
+It is a good idea to have a separate file \code{preamble.tex}
+for the preamble and include it just above \verb+\begin{document}+ with the line
+\begin{quote}
+\begin{lstlisting}
+\input{preamble}
+\end{lstlisting}
+\end{quote}
+The \verb+\input+ command looks for the \code{.tex} file with the name provided
+in the braces in the current folder, unless you give it specific instructions to
+look elsewhere. Thus, the file \code{preamble.tex} must in this case be in the
+same folder as the main file.
+
+Using a seperate preamble file allows you to use the same preamble for several
+documents. This is actually a first step in creating your own packages, see
+\url{http://en.wikibooks.org/wiki/LaTeX/Creating_Packages}.
+
+\section{Category theory in \LaTeX}
+
+\subsection{Theorems, definitions and exercises}
+Theorem environments, which are provided by the \code{amsthm} package, can be
+used to declare environments for theorems, lemmas, definitions, exercises, and
+the like. To declare the environments for definitions and exercises, we have
+included the lines
+\begin{quote}
+\begin{lstlisting}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}{Exercise}
+\end{lstlisting}
+\end{quote}
+in the preamble.
+
+Now we can start writing definitions. For instance, the definition of a category
+is written in the \code{document}-environment as:
+
+\begin{quote}
+\begin{lstlisting}
+\begin{defn}
+A \emph{category} $\cat{C}$ consists of
+\begin{itemize}
+\item a collection of objects: $A$, $B$, $C$,
+  \ldots
+\item a collection of arrows: $f$, $g$, $h$,
+  \ldots
+\item for each arrow $f$ objects $\domain{f}$ and
+  $\codomain{f}$ called the \emph{domain} and 
+\emph{codomain} of $f$. If $\domain{f}=A$ and 
+  $\codomain{f}=B$, we also write $f:A\to B$,
+\item given $f:A\to B$ and $g:B\to C$, so that 
+  $\domain{g}=\codomain{f}$, there is an arrow 
+  $g\circ f:A\to C$,
+\item an arrow $\idarrow[A]:A\to A$ for every 
+  object $A$ of $\cat{C}$,
+\end{itemize}
+such that
+\begin{description}
+\item[(Associative law)] for every $f:A\to B$, 
+  $g:B\to C$ and $h:C\to C$ we have
+\begin{equation*}
+h\circ(g\circ f)=(h\circ g)\circ f,
+\end{equation*}
+\item[(Unit laws)] for every $f:A\to B$ we have
+\begin{equation*}
+f\circ\idarrow[A]=f=\idarrow[B]\circ f.
+\end{equation*}
+\end{description}
+\end{defn}
+\end{lstlisting}
+\end{quote}
+
+This results in:
+\begin{defn}
+A \emph{category} $\cat{C}$ consists of
+\begin{itemize}
+\item a collection of objects: $A$, $B$, $C$, \ldots
+\item a collection of arrows: $f$, $g$, $h$, \ldots
+\item for each arrow $f$ objects $\domain{f}$ and $\codomain{f}$ called
+the \emph{domain} and \emph{codomain} of $f$. If $\domain{f}=A$ and $\codomain{f}=B$,
+we also write $f:A\to B$,
+\item given $f:A\to B$ and $g:B\to C$, so that $\domain{g}=\codomain{f}$, there
+is an arrow $g\circ f:A\to C$,
+\item an arrow $\idarrow[A]:A\to A$ for every object $A$ of $\cat{C}$,
+\end{itemize}
+such that
+\begin{description}
+\item[(Associative law)] for every $f:A\to B$, $g:B\to C$ and $h:C\to C$ we have
+\begin{equation*}
+h\circ(g\circ f)=(h\circ g)\circ f,
+\end{equation*}
+\item[(Unit laws)] for every $f:A\to B$ we have
+\begin{equation*}
+f\circ\idarrow[A]=f=\idarrow[B]\circ f.
+\end{equation*}
+\end{description}
+\end{defn}
+
+\subsection{Drawing diagrams}
+For drawing diagrams, we recommend the \code{tikz-cd} package. The documentation
+for the \code{tikz-cd} package is available on \url{http://www.ctan.org/pkg/tikz-cd}.
+Be sure you use the latest version of \code{tikz-cd}, because its features and
+syntax has been changed recently.
+
+As an example of a diagram drawn with \code{tikz-cd}, the following code displays
+the diagram that has been used in class to demonstrate the associative law:
+\begin{quote}
+\begin{lstlisting}
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[r,"f"]
+  \arrow[dr,swap,"g\circ f"]
+  &
+B \arrow[dr,"g\circ h"]
+  \arrow[d,swap,"g"]
+  \\
+  {}&
+C \arrow[r,swap,"h"]
+  &
+D
+\end{tikzcd}
+\end{equation*}
+\end{lstlisting}
+\end{quote}
+The output of the above code is the diagram
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[r,"f"]
+  \arrow[dr,swap,"g\circ f"]
+  &
+B \arrow[dr,"g\circ h"]
+  \arrow[d,swap,"g"]
+  \\
+  {}&
+C \arrow[r,swap,"h"]
+  &
+D
+\end{tikzcd}
+\end{equation*}
+It is also possible to draw parallel arrows, for instance, to display equalizer
+diagrams, and dotted arrows to display universal properties. The code
+\begin{quote}
+\begin{lstlisting}
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[yshift=.7ex,r,"f"]
+  \arrow[yshift=-.7ex,r,swap,"g"]
+  &
+B \arrow[r,"e"]
+  \arrow[dr,swap,"h"]
+  &
+C \arrow[densely dotted,d,"\exists!"]
+  \\
+& &
+D
+\end{tikzcd}
+\end{equation*}
+\end{lstlisting}
+\end{quote}
+results in the diagram
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[yshift=.7ex,r,"f"]
+  \arrow[yshift=-.7ex,r,swap,"g"]
+  &
+B \arrow[r,"e"]
+  \arrow[dr,swap,"h"]
+  &
+C \arrow[densely dotted,d,"\exists!"]
+  \\
+& &
+D
+\end{tikzcd}
+\end{equation*}
+When the diagram seems too packed with information, it sometimes helps to
+separate the rows and columns more by starting the \code{tikzcd}-environment
+with the option \code{column sep=huge} or \code{row sep=large}, for example.
+More precisely, the environment would look like
+\begin{quote}
+\begin{lstlisting}
+\begin{tikzcd}[column sep=huge]
+...
+\end{tikzcd}
+\end{lstlisting}
+\end{quote}
+The package documentation contains more examples which will prove useful in
+displaying diagrams.
+
+\section{Getting your homework done}
+The source file of your homework would probably look something like
+\begin{quote}
+\begin{lstlisting}
+\documentclass{article}
+\title{Homework set 1}
+\author{Student's name}
+\date\today
+
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage{tikzcd}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Exercise}
+
+\newcommand{\cat}{%
+  \mathbf%
+}
+\newcommand{\domain}[1]{%
+  \mathrm{dom}(#1)%
+}
+\newcommand{\codomain}[1]{%
+  \mathrm{cod}(#1)%
+}
+\newcommand{\idarrow}[1][]{%
+  \mathbf{1}_{#1}%
+}
+
+%%%% Macros for specific categories
+\newcommand{\Cat}{%
+  \cat{Cat}%
+}
+\newcommand{\Mon}{%
+  \cat{Mon}%
+}
+\newcommand{\Poset}{%
+  \cat{Poset}%
+}
+\newcommand{\Rel}{%
+  \cat{Rel}%
+}
+\newcommand{\Sets}{%
+  \cat{Sets}%
+}
+\newcommand{\Groups}{%
+  \cat{Groups}%
+}
+\newcommand{\Graphs}{%
+  \cat{Graphs}%
+}
+
+\begin{document}
+\maketitle
+
+\begin{ex}
+% Solution to exercise 1
+\end{ex}
+
+\begin{ex}
+% Solution to exercise 2
+\end{ex}
+
+\begin{ex}
+\begin{enumerate}
+\item % Solution to exercise 3a
+\item % Solution to exercise 3b
+\item % Solution to exercise 3c
+\end{enumerate}
+\end{ex}
+
+\end{document}
+\end{lstlisting}
+\end{quote}
+
+\section{More \LaTeX-resources}
+
+\begin{itemize}
+\item Books:
+\begin{itemize}
+\item The \LaTeX~companion (2nd edition) by Mittelbach, Goossens and Braams,
+\item The \TeX-book by Knuth,
+\item More math into \LaTeX~by Gr\"atzer.
+\end{itemize}
+\item Resources on the web:
+\begin{itemize}
+\item The main question \& answer site with lots of useful tips and tricks
+is \url{http://tex.stackexchange.com}.
+\item Whenever you want to use a symbol in your document, but don't know the
+corresponding \LaTeX-command, or even how to call that symbol, \name{detexify}
+might be an outcome. On the website \url{http://detexify.kirelabs.org/classify.html}
+you can draw your symbol and it will tell you which of the actual
+\LaTeX-symbols it thinks it matches most closely. If this does not help, consult
+the \name{ctan} comprehensive symbol list, which is available at
+\url{http://www.ctan.org/tex-archive/info/symbols/comprehensive/}
+\end{itemize}
+\end{itemize}
+
+If you have any questions or suggestions you can also email me.
+
+\end{document}
