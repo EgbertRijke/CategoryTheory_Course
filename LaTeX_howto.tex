@@ -131,30 +131,30 @@ is written in the \code{document}-environment as:
 \begin{quote}
 \begin{minted}{tex}
 \begin{defn}
-A \emph{category} $\cat{C}$ consists of
+A \emph{category} \(\cat{C}\) consists of
 \begin{itemize}
-\item a collection of objects: $A$, $B$, $C$,
+\item a collection of objects: \(A\), \(B\), \(C\),
   \ldots
-\item a collection of arrows: $f$, $g$, $h$,
+\item a collection of arrows: \(f\), \(g\), \(h\),
   \ldots
-\item for each arrow $f$ objects $\domain{f}$ and
-  $\codomain{f}$ called the \emph{domain} and 
-\emph{codomain} of $f$. If $\domain{f}=A$ and 
-  $\codomain{f}=B$, we also write $f:A\to B$,
-\item given $f:A\to B$ and $g:B\to C$, so that 
-  $\domain{g}=\codomain{f}$, there is an arrow 
-  $g\circ f:A\to C$,
-\item an arrow $\idarrow[A]:A\to A$ for every 
-  object $A$ of $\cat{C}$,
+\item for each arrow \(f\) objects \(\domain{f}\) and
+  \(\codomain{f}\) called the \emph{domain} and 
+\emph{codomain} of \(f\). If \(\domain{f}=A\) and 
+  \(\codomain{f}=B\), we also write \(f:A\to B\),
+\item given \(f:A\to B\) and \(g:B\to C\), so that 
+  \(\domain{g}=\codomain{f}\), there is an arrow 
+  \(g\circ f:A\to C\),
+\item an arrow \(\idarrow[A]:A\to A\) for every 
+  object \(A\) of \(\cat{C}\),
 \end{itemize}
 such that
 \begin{description}
-\item[(Associative law)] for every $f:A\to B$, 
-  $g:B\to C$ and $h:C\to C$ we have
+\item[(Associative law)] for every \(f:A\to B\), 
+  \(g:B\to C\) and \(h:C\to C\) we have
 \begin{equation*}
 h\circ(g\circ f)=(h\circ g)\circ f,
 \end{equation*}
-\item[(Unit laws)] for every $f:A\to B$ we have
+\item[(Unit laws)] for every \(f:A\to B\) we have
 \begin{equation*}
 f\circ\idarrow[A]=f=\idarrow[B]\circ f.
 \end{equation*}
@@ -165,24 +165,24 @@ f\circ\idarrow[A]=f=\idarrow[B]\circ f.
 
 This results in:
 \begin{defn}
-A \emph{category} $\cat{C}$ consists of
+A \emph{category} \(\cat{C}\) consists of
 \begin{itemize}
-\item a collection of objects: $A$, $B$, $C$, \ldots
-\item a collection of arrows: $f$, $g$, $h$, \ldots
-\item for each arrow $f$ objects $\domain{f}$ and $\codomain{f}$ called
-the \emph{domain} and \emph{codomain} of $f$. If $\domain{f}=A$ and $\codomain{f}=B$,
-we also write $f:A\to B$,
-\item given $f:A\to B$ and $g:B\to C$, so that $\domain{g}=\codomain{f}$, there
-is an arrow $g\circ f:A\to C$,
-\item an arrow $\idarrow[A]:A\to A$ for every object $A$ of $\cat{C}$,
+\item a collection of objects: \(A\), \(B\), \(C\), \ldots
+\item a collection of arrows: \(f\), \(g\), \(h\), \ldots
+\item for each arrow \(f\) objects \(\domain{f}\) and \(\codomain{f}\) called
+the \emph{domain} and \emph{codomain} of \(f\). If \(\domain{f}=A\) and \(\codomain{f}=B\),
+we also write \(f:A\to B\),
+\item given \(f:A\to B\) and \(g:B\to C\), so that \(\domain{g}=\codomain{f}\), there
+is an arrow \(g\circ f:A\to C\),
+\item an arrow \(\idarrow[A]:A\to A\) for every object \(A\) of \(\cat{C}\),
 \end{itemize}
 such that
 \begin{description}
-\item[(Associative law)] for every $f:A\to B$, $g:B\to C$ and $h:C\to C$ we have
+\item[(Associative law)] for every \(f:A\to B\), \(g:B\to C\) and \(g:C\to D\) we have
 \begin{equation*}
 h\circ(g\circ f)=(h\circ g)\circ f,
 \end{equation*}
-\item[(Unit laws)] for every $f:A\to B$ we have
+\item[(Unit laws)] for every \(f:A\to B\) we have
 \begin{equation*}
 f\circ\idarrow[A]=f=\idarrow[B]\circ f.
 \end{equation*}
