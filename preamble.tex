@@ -2,19 +2,7 @@
 \usepackage{microtype}              % adjusts LaTeX's default spacing
 \usepackage{amsmath,amssymb,amsthm} % display math
 \usepackage{tikz-cd}                % draw commutative diagrams
-\usepackage{listings}               % display code
-\lstset{%                            % set parameters to display code
-  language=tex,%
-  keywordstyle=\color{red}\texttt,%
-  commentstyle=\color{blue}\textit,%
-  numbers=left,%
-  numberstyle=\tiny\color{gray}%
-}
-\lstset{%
-  morekeywords={documentclass,begin,author,title,date,today,maketitle,LaTeX,
-  newcommand,mathcal,mathbf,mathrm,texttt,theoremstyle,newtheorem,emph,circ,
-  usepackage}%
-}
+\usepackage{minted}
 \usepackage[colorlinks=true]{hyperref}               % create hyperlinks in the pdf file.
 
 %%%% Environments for theorems and definitions

@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \title{Using \LaTeX~in category theory}
-\author{Egbert Rijke}
+\author{Egbert Rijke\\\texttt{erijke@andrew.cmu.edu}}
 \date\today
 
 \input{preamble}
@@ -12,7 +12,7 @@
 
 This document is a quick how-to for the students of the category theory
 class at the CMU. It contains specific and practical knowledge of \LaTeX~which
-will be useful to write homework solutions. 
+will be useful to write homework solutions.
 
 \section{Writing your document}
 \subsection{Setting up your document}
@@ -25,7 +25,7 @@ The basic layout of the source code of the document you are currently
 reading is
 
 \begin{quote}
-\begin{lstlisting}
+\begin{minted}{tex}
 \documentclass{article}
 
 \title{Using \LaTeX~in category theory}
@@ -46,7 +46,7 @@ reading is
 % \end{document} declarations.
 
 \end{document}
-\end{lstlisting}
+\end{minted}
 \end{quote}
 
 As soon as the \LaTeX-compiler encounters the percent sign (\%), the rest of 
@@ -73,7 +73,7 @@ user defined macro.
 
 The macros defined to write the math in this document are
 \begin{quote}
-\begin{lstlisting}
+\begin{minted}{tex}
 \newcommand{\cat}{%
   \mathbf%
 }
@@ -86,7 +86,7 @@ The macros defined to write the math in this document are
 \newcommand{\idarrow}[1][]{%
   \mathbf{1}_{#1}%
 }
-\end{lstlisting}
+\end{minted}
 \end{quote}
 
 Detailed information on defining your own macros can be found on
@@ -96,9 +96,9 @@ Detailed information on defining your own macros can be found on
 It is a good idea to have a separate file \code{preamble.tex}
 for the preamble and include it just above \verb+\begin{document}+ with the line
 \begin{quote}
-\begin{lstlisting}
+\begin{minted}{tex}
 \input{preamble}
-\end{lstlisting}
+\end{minted}
 \end{quote}
 The \verb+\input+ command looks for the \code{.tex} file with the name provided
 in the braces in the current folder, unless you give it specific instructions to
@@ -117,11 +117,11 @@ used to declare environments for theorems, lemmas, definitions, exercises, and
 the like. To declare the environments for definitions and exercises, we have
 included the lines
 \begin{quote}
-\begin{lstlisting}
+\begin{minted}{tex}
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
 \newtheorem{ex}{Exercise}
-\end{lstlisting}
+\end{minted}
 \end{quote}
 in the preamble.
 
@@ -129,7 +129,7 @@ Now we can start writing definitions. For instance, the definition of a category
 is written in the \code{document}-environment as:
 
 \begin{quote}
-\begin{lstlisting}
+\begin{minted}{tex}
 \begin{defn}
 A \emph{category} $\cat{C}$ consists of
 \begin{itemize}
@@ -160,7 +160,7 @@ f\circ\idarrow[A]=f=\idarrow[B]\circ f.
 \end{equation*}
 \end{description}
 \end{defn}
-\end{lstlisting}
+\end{minted}
 \end{quote}
 
 This results in:
@@ -198,7 +198,7 @@ syntax has been changed recently.
 As an example of a diagram drawn with \code{tikz-cd}, the following code displays
 the diagram that has been used in class to demonstrate the associative law:
 \begin{quote}
-\begin{lstlisting}
+\begin{minted}{tex}
 \begin{equation*}
 \begin{tikzcd}
 A \arrow[r,"f"]
@@ -213,7 +213,7 @@ C \arrow[r,swap,"h"]
 D
 \end{tikzcd}
 \end{equation*}
-\end{lstlisting}
+\end{minted}
 \end{quote}
 The output of the above code is the diagram
 \begin{equation*}
@@ -233,7 +233,7 @@ D
 It is also possible to draw parallel arrows, for instance, to display coequalizer
 diagrams, and dotted arrows to display universal properties. The code
 \begin{quote}
-\begin{lstlisting}
+\begin{minted}{tex}
 \begin{equation*}
 \begin{tikzcd}
 A \arrow[yshift=.7ex,r,"f"]
@@ -248,7 +248,7 @@ C \arrow[densely dotted,d,"\exists!"]
 D
 \end{tikzcd}
 \end{equation*}
-\end{lstlisting}
+\end{minted}
 \end{quote}
 results in the diagram
 \begin{equation*}
@@ -270,20 +270,20 @@ separate the rows and columns more by starting the \code{tikzcd}-environment
 with the option \code{column sep=huge} or \code{row sep=large}, for example.
 More precisely, the environment would look like
 \begin{quote}
-\begin{lstlisting}
+\begin{minted}{tex}
 \begin{tikzcd}[column sep=huge]
 ...
 \end{tikzcd}
-\end{lstlisting}
+\end{minted}
 \end{quote}
 The package documentation contains more examples which will prove useful in
 displaying diagrams.
 
 \section{Getting your homework done}
 The source file of your homework would probably look something like
+
 \begin{quote}
-\lstset{numbers=none}
-\begin{lstlisting}
+\begin{minted}{tex}
 \documentclass{article}
 \title{Homework set 1}
 \author{Student's name}
@@ -353,7 +353,7 @@ The source file of your homework would probably look something like
 \end{ex}
 
 \end{document}
-\end{lstlisting}
+\end{minted}
 \end{quote}
 You are free to copy and use the above code.
 
@@ -379,9 +379,4 @@ the \name{ctan} comprehensive symbol list, which is available at
 \url{http://www.ctan.org/tex-archive/info/symbols/comprehensive/}
 \end{itemize}
 \end{itemize}
-
-If you have any questions or suggestions you can also email me. To see how
-things are done, you may also want to have a look at the source of this document.
-It is available on
-\url{https://github.com/EgbertRijke/CategoryTheory_Course}
 \end{document}
